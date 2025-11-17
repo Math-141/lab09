@@ -1,0 +1,280 @@
+---
+title: "Lab 9"
+subtitle: "Math 141, Week 11"
+author: "Insert Your Name Here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Thursday, November 27th at 5pm on Gradescope
+
+In this lab, you will
+
+1. Learn to import data into RStudio.
+1. Practice using theoretical probability distributions in statistical inference problems. 
+1. Compute sample size calculations and study the relationship between sample size, confidence level, and standard error.
+
+## Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+
+## Problems
+
+-   For this lab, you don't need to worry about labels and a title for your plots **unless a question specifies otherwise**.
+-   Run the following chunk to load the necessary packages.
+
+```{r}
+# Insert libraries here
+library(tidyverse)
+library(infer)
+library(moderndive)
+```
+
+### Problem 0  
+
+So far, we have been uploading relevant datasets to the RStudio Server for you and then including the code to load them directly in the lab Quarto file.  Now it is time for you to practice importing data.
+
+**Step 1**: Upload the data to the RStudio Server project. 
+
+* Download the csv of the dataset from [GitHub](https://github.com/Math-141/Math-141.github.io/blob/main/labs/data/vitd_subset.csv).
+
+Then within the RStudio Server project:
+
+* In the lower-right window, click on the "Files" tab.
+* Navigate to the location in your home directory where you want to store the dataset.  (I recommend storing it in the same place as your p-set.)
+* Then click "Upload".
+* Click "Choose File" and find the dataset on your computer.  Click "Open" and then "OK".
+
+**Step 2**: Load the data in your workspace (and Quarto document).
+
+* In the upper-right window, click on the "Environment" tab.
+* Click "Import Dataset" and then "From Text (readr)..." 
+* Click "Browse" and navigate to the desired csv.
+* Look over the previewed version for any issues.
+* Click "Import".
+* From the console, grab the line of code that includes `read_csv()` and insert it below.
+    + Try knitting the document.  If it won't knit because it can't find the csv, make you the path you have entered in the **relative path** in relation to the Quarto document you are working in. 
+
+
+```{r}
+# Insert the line of code that contains read_csv()
+
+```
+
+
+### Problem 1
+
+Vitamin D is essential for growth and bone health in children. It can be either obtained from dietary sources or produced by the body upon exposure of skin to ultraviolet waves (typically via sun exposure). Natural food sources rich in Vitamin D are scarce. Even in many low latitude countries where sunshine is plentiful, Vitamin D deficiency is a public health concern. It is thought that vitamin D deficiency could be due to various factors such as avoidance of sunlight, indoor lifestyles, and low-calcium diet.
+
+A study was conducted to evaluate Vitamin D status among schoolchildren in Thailand. Exposure to sunlight allows the body to produce a serum that is an indicator of Vitamin D status; i.e., the levels of this serum in the body can be measured.
+
+The study sample consisted of schoolchildren between the ages of 6 and 14 years old. The researchers randomly selected 10 schools of all the schools in the ten poorest rural subdistricts in Thailand. Within each school, they divided children into four groups: females grades 1-3, males grades 1-3, females grades 4-6, and males grades 4-6. A simple random sample of 15 children were selected from each of these four groups.
+
+Investigate the conjecture that for female schoolchildren, there is a negative linear relationship between vitamin D serum level (`vitd_serum`) and age (`age`).
+
+a. Using a **simulation-based** approach, conduct a hypothesis test and summarize your results.  Make sure to include:
+
+* A useful exploratory data visualization and a relevant conclusion from this visualization.
+* The null and alternative hypotheses, the observed test statistic, and the $p$-value.
+* An interpretation of the $p$-value in the context of the problem.
+* Conclusions about the research conjecture.
+
+```{r}
+
+```
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+For the rest of this problem, let's explore how our analysis changes if we use a **theory-based** approach.  
+
+
+b. Do the hypotheses change if we use a theory-based approach instead of a simulation-based approach?  Explain why or why not.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+c. For this problem, is the sample size assumption of the Central Limit Theorem met?  Hint: Use these [inference summary tables](https://math-141.github.io/inference_summary.html) to determine the required sample size.
+
+```{r}
+
+```
+
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+d. Use `cor.test()` to compute the z-score test statistic and corresponding p-value.  Interpret the $z$-score test statistic in context of the data.  Also, which distribution does the test statistic approximately follow when the sample size is large? 
+
+
+```{r}
+
+```
+
+
+*********************************************************************************
+
+
+*********************************************************************************
+
+e. Use `cor.test()` to compute a 95% confidence interval for the population correlation coefficient.  Hint: Use `two.sided` in the function to get the usual two-sided confidence interval.
+
+```{r}
+
+```
+
+f. For this problem, does your theory-based inference *agree* with the simulation-based inference?  Justify your answer.
+
+*********************************************************************************
+
+
+*********************************************************************************
+
+
+
+### Problem 2
+
+Often before we conduct a study we want to determine how **large our sample** should be to achieve a certain level of precision in our confidence interval.  This determination is called a **sample size calculation**.  To determine the sample size, we want to bound our Margin of Error by B (ME $\leq$ B) and solve for $n$.
+
+a. Derive the sample size formula for a confidence interval for $\mu$, the population mean. 
+
+In your solution fill-in the following
+
+$$n \geq \frac{fill-in}{fill-in}$$.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+b. Unfortunately, our sample size formula relies on statistics from the study. We can't compute those statistics since we do a sample size calculation BEFORE collecting data.  To remedy this issue, researchers will usually either:
+
+* Estimate the unknowns from previous studies.  
+* Conduct a pilot study on a small group of cases and use this to estimate unknowns.
+
+Notice that your sample size formula in (a) has $t^*$ in it.  **Explain why it would be difficult to find this critical value.**
+
+To solve this issue, typically researchers will insert $z^*$ for $t^*$.  Although that is also what we will do, discuss the danger in doing so. 
+
+
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+c.  Let's determine the sample size needed to estimate $\mu$ with 90% confidence when we approximate $t^*$ with $z^*$ and $s = 15$.  Find the needed sample size for a margin of error within 1 unit, 2 units, 5 units.  Comment on the relationship between the sample size and the desired margin of error.
+
+```{r}
+
+```
+
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+d. With a margin of error of at most 4 units, determine the sample size needed to estimate $\mu$ when we approximate $t^*$ with $z^*$ and $s = 15$ at a confidence level of 90%, 95%, and 99%. Comment on the relationship between the sample size and the confidence level. 
+
+```{r}
+
+```
+
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+### Problem 3
+
+The TV show Mythbusters wanted to determine if yawns really are contagious.  Therefore, they recruited 50 people at a local flea market to participate in a study.  For each subject, a researcher would take the subject to a small room with a hidden camera.  The researcher would either yawn (treatment group) or not yawn (control group) as they led the subject into the room.  Then as the subject sat in the room, the researchers observed whether or not they yawned.  Mythbusters concluded that yawns are contagious. Let's see what conclusions we want to draw from their data.
+
+```{r}
+mythbusters <- read_csv("data/mythbusters.csv")
+```
+
+
+a. Using a **simulation-based** approach, conduct a hypothesis test and summarize your results. Make sure to use a **standardized** test statistic for easy comparison with the theory-based approach. Make sure to include: 
+
+* A useful exploratory data visualization and a relevant conclusion from this visualization.
+* The null and alternative hypotheses, the observed test statistic, and the $p$-value.
+* An interpretation of the $p$-value in the context of the problem.
+* Conclusions about the research conjecture.
+
+
+```{r}
+
+```
+
+
+*******************************************************
+
+
+
+*******************************************************
+
+
+b. Using a **theory-based** approach, conduct a hypothesis test and summarize your results.  Make sure to include:
+
+* The null and alternative hypotheses, the observed test statistic, and the $p$-value.
+* Check the sample size assumption of the CLT.  (If not met, make note of this but still complete the test.)
+* An interpretation of the $p$-value in the context of the problem.
+* Conclusions about the research conjecture.
+
+```{r}
+
+```
+
+*******************************************************
+
+
+
+*******************************************************
+
+
+c. Use the `visualize()` function to plot the null distribution created in part (a) and in part (b) in the same plot. Also, plot the observed test statistic on these distributions. Hint: take a look at the documentation (i.e., run `?visualize()` in the console) to learn how to plot both the theory-based and simulatoin-based method in one.
+
+```{r}
+
+```
+
+
+
+d. For this example, you used both a simulation-based and theory-based approach. Did you get a similar p-value when doing both methods (with differences only due to simulation error)? If so, why is that the case? If not, why is that the case? Which method (theory-based or simulation-based) should you use for this example, and why? 
+
+
+*******************************************************
+
+
+
+
+*******************************************************
+
+
