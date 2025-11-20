@@ -46,7 +46,7 @@ So far, we have been uploading relevant datasets to the RStudio Server for you a
 Then within the RStudio Server project:
 
 * In the lower-right window, click on the "Files" tab.
-* Navigate to the location in your home directory where you want to store the dataset.  (I recommend storing it in the same place as your p-set.)
+* Navigate to the location in your home directory where you want to store the dataset.  (I recommend storing it in the same place as your lab.)
 * Then click "Upload".
 * Click "Choose File" and find the dataset on your computer.  Click "Open" and then "OK".
 
@@ -58,7 +58,7 @@ Then within the RStudio Server project:
 * Look over the previewed version for any issues.
 * Click "Import".
 * From the console, grab the line of code that includes `read_csv()` and insert it below.
-    + Try knitting the document.  If it won't knit because it can't find the csv, make you the path you have entered in the **relative path** in relation to the Quarto document you are working in. 
+    + Try rendering the document.  If it won't render because it can't find the csv, make you the path you have entered in the **relative path** in relation to the Quarto document you are working in. 
 
 
 ```{r}
