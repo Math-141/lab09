@@ -41,7 +41,7 @@ So far, we have been uploading relevant datasets to the RStudio Server for you a
 
 **Step 1**: Upload the data to the RStudio Server project. 
 
-* Download the csv of the dataset from [GitHub](https://github.com/Math-141/Math-141.github.io/blob/main/labs/data/vitd_subset.csv).
+* Download the csv of the dataset from [the course website](https://math-141.github.io/labs/lab_09.html).
 
 Then within the RStudio Server project:
 
